@@ -5,19 +5,19 @@ class CompaPage{
     }
 
     ClickCompararVeiculos(){
-        cy.xpath('//h3[@class="headFive" and contains(text(), "COMPARAR VEÍCULOS")]').click()
+        cy.contains("h3[class='headFive']", 'COMPARAR VEÍCULOS').click()
     }
 
     ClickADDComparacaoNijaZX4R(){
-        cy.get('[data-subcategoryid="1"] > :nth-child(2) > :nth-child(2) > .row > .col-6 > .apparelContainer > .addCompare > .addCompareText').click()
-    }
+        cy.get('[data-productid="5510"]').eq(1).click()
+        }
 
     ClickAddComparacaoZ500(){
-        cy.get('[data-msrp="38510"] > .apparelContainer > .addCompare > .addCompareText').click()
+        cy.get('[data-productid="5549"]').eq(1).click()
     }
 
     ClickCompareButton(){
-        cy.get('.col-3 > .compareButton').click()
+        cy.get('[class="blackBtn compareButton"]').eq(0).click()
     }
 
     VerificarPaginadeComparacao(){

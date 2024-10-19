@@ -16,6 +16,7 @@ before(() => {
 it('TC 001 - comparando motos', () => {
     cy.login()
     compapage.ClickFerramentasdeCompra()
+    cy.wait(1000)
     compapage.ClickCompararVeiculos()
     //selecionando a moto ninja ZX-4R
     compapage.ClickADDComparacaoNijaZX4R()
