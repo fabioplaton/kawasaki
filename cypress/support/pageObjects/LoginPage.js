@@ -12,7 +12,7 @@ class LoginPage{
     }
 
     ClickButtonLogin(){
-        cy.xpath('//button[@class="blackBtn" and contains(text(), "LOGIN")]').click()
+        cy.contains('button', "LOGIN").click()
     }
 
     ValidarUser(){

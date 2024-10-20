@@ -21,7 +21,7 @@ class Register{
     }
 
     ClickRegister(){
-        cy.xpath('//button[@class="blackBtn" and contains(text(), "REGISTRAR-SE")]').click()
+        cy.contains('button', 'REGISTRAR-SE').click()
     }
     
 }

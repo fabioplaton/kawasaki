@@ -21,7 +21,7 @@ class CompaPage{
     }
 
     VerificarPaginadeComparacao(){
-        cy.xpath('//*[@class="headFour ml-3 pt-3 pb-3" and contains(text(), "VISÃO GERAL DA COMPARAÇÃO")]').should('contains.text', 'VISÃO GERAL DA COMPARAÇÃO')
+        cy.contains('[class="headFour ml-3 pt-3 pb-3"]', 'VISÃO GERAL DA COMPARAÇÃO').should('contains.text', 'VISÃO GERAL DA COMPARAÇÃO')
     }
 
 }
