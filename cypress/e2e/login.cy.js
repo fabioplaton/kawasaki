@@ -1,22 +1,40 @@
-import LoginPage from "../support/pageObjects/LoginPage"
+import login_page from '../support/pageObjects/login_page'
 
-let config 
-const loginpage = new LoginPage()  
+const config = require('../fixtures/config.json')  
 
 beforeEach (() => {
-    cy.visit('https://www.kawasakibrasil.com/pt-br/')
-})
-
-before(() => {
-    cy.fixture('config').then((data) => {
-        config = data
-    })
+    cy.visit('/')
+    login_page.clickMinhaKawasaki()
 })
 
 it('TC 001 - Login com sucesso', () => {
-    loginpage.ClickMinhaKawasaki()
-    loginpage.EnterMail(config.email)
-    loginpage.EnterPassword(config.password)
-    loginpage.ClickButtonLogin()
-    loginpage.ValidarUser()
+    login_page.enterMail(config.email)
+    login_page.enterPassword(config.password)
+    login_page.clickButtonLogin()
+    login_page.validarUser(config.email)
+})
+
+it('TC 002 - Login email em branco', () => {
+    login_page.clickButtonLogin()
+    login_page.validacaoEmailError()
+})
+
+it('TC 003 - Login email inválido', () => {
+    login_page.enterMail('Virginie33')
+    login_page.enterPassword(config.password)
+    login_page.clickButtonLogin()
+    login_page.validacaoEmailInvalido()
+})
+
+it('TC 004 - Login sem password', () => {
+    login_page.enterMail(config.email)
+    login_page.clickButtonLogin()
+    login_page.validacaoPasswordError()
+})
+
+it.only('TC 005 - Login password inválido', () => {
+    login_page.enterMail(config.email)
+    login_page.enterPassword('123456')
+    login_page.clickButtonLogin()
+    login_page.validacaoEmailOuSenhaIncorretos()
 })

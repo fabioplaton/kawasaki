@@ -1,27 +1,20 @@
-import CompaPage from "../support/pageObjects/CompaPage"
+import compar_page from '../support/pageObjects/compar_page'
 
-let config
-const compapage = new CompaPage()
+const config = require('../fixtures/config.json')
 
 beforeEach (() => {
-    cy.visit('https://www.kawasakibrasil.com/pt-br/')
-})
-
-before(() => {
-    cy.fixture('config').then((data) => {
-        config = data
-    })
+    cy.visit('/')
 })
 
 it('TC 001 - comparando motos', () => {
     cy.login()
-    compapage.ClickFerramentasdeCompra()
+    compar_page.clickFerramentasdeCompra()
     cy.wait(1000)
-    compapage.ClickCompararVeiculos()
+    compar_page.clickCompararVeiculos()
     //selecionando a moto ninja ZX-4R
-    compapage.ClickADDComparacaoNijaZX4R()
+    compar_page.clickADDComparacaoNijaZX4R()
     //selecionando a moto Z500
-    compapage.ClickAddComparacaoZ500() 
-    compapage.ClickCompareButton()
-    compapage.VerificarPaginadeComparacao()
+    compar_page.clickAddComparacaoZ500() 
+    compar_page.clickCompareButton()
+    compar_page.verificarPaginadeComparacao()
 })
